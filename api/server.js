@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-
+import userRoute from "./routes/user.route.js";
 const app = express();
 dotenv.config();
 mongoose.set('strictQuery', true);
@@ -13,6 +13,7 @@ try {
     console.log('not connected to MongoDB');
 }
 
+app.use("/api/users" , userRoute);
 app.listen(8080, () => {
     console.log('Server is running on port 8080');
 })
