@@ -1,8 +1,8 @@
 import express from 'express';
 
 const router = express.Router();
+router.get("/register",)
+router.get("/login",)
 
-router.get("/test", (req, res) => {
-res.send('zorttt  !');
-})
+
 export default router;
