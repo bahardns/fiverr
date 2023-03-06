@@ -1,0 +1,1 @@
+# projede kullanılan teknolojiler
