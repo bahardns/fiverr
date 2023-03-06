@@ -17,7 +17,9 @@ try {
     console.log('Connected to MongoDB');
 } catch (error) {
     console.log('not connected to MongoDB');
-}
+};
+
+app.use(express.json());
 app.use("/api/auth",authRoute);
 app.use("/api/users" , userRoute);
 /*app.use("/api/gigs" , gigRoute);
@@ -28,5 +30,3 @@ app.use("/api/reviews", reviewRoute);*/
 app.listen(8080, () => {
     console.log('Server is running on port 8080');
 })
-  
-    
