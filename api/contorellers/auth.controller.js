@@ -1,12 +1,12 @@
+import User from "../models/user.model.js";
 export const register = async (req, res) => {
     try {
         const newUser = new User({
-            username: "testUser",
-            email: "testEmail",
-            password: "testPassword",
-            country: "testCountry",
-        }
-        );
+            username: "test",
+            email: "test",
+            password: "test",
+            country: "test",
+        });
         await newUser.save();
         res.status(201).send("newUser has been created");
     }
@@ -15,9 +15,5 @@ export const register = async (req, res) => {
 
     }
 }
-export const login = async (req, res) => {
-
-}
-export const logout = async (req, res) => {
-
-}
+export const login = async (req, res) => {};
+export const logout = async (req, res) => {};
