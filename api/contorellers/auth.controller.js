@@ -18,10 +18,15 @@ export const register = async (req, res) => {
 }
 export const login = async (req, res) => { 
     try {
-        newUser = await User.findOne({ email: req.body.email });
-        res.status(200).send(newUser); 
+      const  user = await User.findOne({ username: req.body.username });
+      if(!user) return res.status(404).send("user not found");
+      const validPassword = bcrypt.compareSync(req.body.password, user.password);
+      if(!validPassword) return res.status(404).send("wrong password or username"); 
+      const {password,...info}=user._doc
+      res.status(200).send(info);
+      //  res.status(200).send("user logged in" + user.username);
     } catch (error) {
         res.status(500).send("something went wrong");
     }
 };
-export const logout = async (req, res) => { };
+export const logout = async (req, res) => { }; 
