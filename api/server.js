@@ -8,25 +8,30 @@ import messageRoute from "./routes/message.route.js";
 import orderRoute from "./routes/order.route.js";
 import reviewRoute from "./routes/review.route.js";*/
 import authRoute from "./routes/auth.route.js";
+import cookieParser from 'cookie-parser';
+
 const app = express();
 dotenv.config();
 mongoose.set('strictQuery', true);
 
-try {
-    await mongoose.connect(process.env.MONGO);
-    console.log('Connected to MongoDB');
-} catch (error) {
-    console.log('not connected to MongoDB');
+const connect = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO);
+        console.log('Connected to MongoDB');
+    } catch (error) {
+        console.log('not connected to MongoDB');
+    }
 };
-
 app.use(express.json());
-app.use("/api/auth",authRoute);
-app.use("/api/users" , userRoute);
+app.use(cookieParser());
+app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
 /*app.use("/api/gigs" , gigRoute);
 app.use("/api/orders" , orderRoute);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 app.use("/api/reviews", reviewRoute);*/
 app.listen(8080, () => {
-    console.log('Server is running on port 8080');
+    connect()
+    console.log('backend server  is running ');
 })

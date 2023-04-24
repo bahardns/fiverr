@@ -7,7 +7,7 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     img: { type: String, required: false },
     country: { type: String, required: true },
-    number: { type: String, required: false },
+    number: {  type: String, required: false },
     desc: { type: String, required: false },
     isSeller: { type: Boolean, required: false },
 }, {
